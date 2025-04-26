@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+
+{% block title %}احجز موعدك - ديكور سمارت{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>احجز موعدك</h1>
+        <p>احصل على استشارة مع أحد مصممينا المحترفين</p>
+    </div>
+</section>
+
+<section class="booking-section">
+    <div class="container">
+        <div class="booking-content">
+            <div class="booking-info">
+                <h2>خدمة الاستشارة</h2>
+                <p>احجز موعداً مع أحد مصممينا للحصول على استشارة مخصصة لمشروعك. يمكنك اختيار الوقت المناسب والمصمم الذي تفضله.</p>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>استشارة عبر الفيديو</h3>
+                        <p>جلسة مباشرة عبر الفيديو مع مصمم محترف لمناقشة أفكارك واحتياجاتك</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>دردشة استشارية</h3>
+                        <p>تواصل مباشر عبر الدردشة للإجابة عن أسئلتك وتقديم توصيات سريعة</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>زيارة منزلية</h3>
+                        <p>زيارة لمساحتك لتقييمها بشكل مباشر وتقديم أفضل الحلول (متوفرة في مناطق محددة)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-form-container">
+                <h2>نموذج الحجز</h2>
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="fullName">الاسم الكامل</label>
+                        <input type="text" id="fullName" name="full_name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceType">نوع الخدمة المطلوبة</label>
+                        <select id="serviceType" name="service_type" required>
+                            <option value="">اختر نوع الخدمة</option>
+                            <option value="video">استشارة عبر الفيديو</option>
+                            <option value="chat">دردشة استشارية</option>
+                            <option value="visit">زيارة منزلية</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="designer">اختيار المصمم</label>
+                        <select id="designer" name="designer">
+                            <option value="auto">اختيار تلقائي</option>
+                            {% for designer in designers %}
+                            <option value="{{ designer.id }}">{{ designer.name }} - {{ designer.specialty }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="bookingDate">اليوم</label>
+                            <input type="date" id="bookingDate" name="booking_date" required min="{{ min_date }}">
+                        </div>
+                        <div class="form-group half">
+                            <label for="bookingTime">الساعة</label>
+                            <input type="time" id="bookingTime" name="booking_time" required min="09:00" max="18:00">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectDetails">تفاصيل المشروع (اختياري)</label>
+                        <textarea id="projectDetails" name="project_details" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">تأكيد الحجز</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="designers-section">
+    <div class="container">
+        <h2 class="section-title">تعرّف على مصممينا</h2>
+        <div class="designers-grid">
+            {% for designer in featured_designers %}
+            <div class="designer-card">
+                <div class="designer-image">
+                    <img src="{{ url_for('static', filename='images/pirson.png') }}" alt="{{ designer.name }}">
+                </div>
+                <h3 class="designer-name">{{ designer.name }}</h3>
+                <p class="designer-specialty">{{ designer.specialty }}</p>
+                <p class="designer-bio">{{ designer.bio }}</p>
+                <div class="designer-rating">
+                    {% for i in range(designer.rating) %}
+                    <i class="fas fa-star"></i>
+                    {% endfor %}
+                    {% for i in range(5 - designer.rating) %}
+                    <i class="far fa-star"></i>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+{% endblock %}

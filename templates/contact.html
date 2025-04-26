@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block title %}تواصل معنا - ديكور سمارت{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>تواصل معنا</h1>
+        <p>نحن هنا للإجابة على استفساراتك</p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>معلومات الاتصال</h2>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-details">
+                        <h3>البريد الإلكتروني</h3>
+                        <p>info@decorsmart.dz</p>
+                        <p>support@decorsmart.dz</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-details">
+                        <h3>رقم الهاتف</h3>
+                        <p>+213 XX XXX XXXX</p>
+                        <p>+213 XX XXX XXXX</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-details">
+                        <h3>العنوان</h3>
+                        <p>الجزائر العاصمة، الجزائر</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-details">
+                        <h3>ساعات العمل</h3>
+                        <p>السبت - الخميس: 9:00 - 18:00</p>
+                        <p>الجمعة: مغلق</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <h3>تابعنا على</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <h2>أرسل رسالة</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="fullName">الاسم الكامل</label>
+                        <input type="text" id="fullName" name="full_name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">الموضوع</label>
+                        <select id="subject" name="subject">
+                            <option value="general">استفسار عام</option>
+                            <option value="services">خدمات التصميم</option>
+                            <option value="products">منتجات الأثاث</option>
+                            <option value="support">الدعم الفني</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">إرسال الرسالة</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="map-section">
+    <div class="container">
+        <h2 class="section-title">موقعنا</h2>
+        <div class="map-container">
+            <!-- يمكن استبدال هذا بخريطة تفاعلية في الإصدار النهائي -->
+            <img src="{{ url_for('static', filename='images/map-placeholder.jpg') }}" alt="خريطة الموقع" class="map-placeholder">
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>ما هي مدة تنفيذ مشروع التصميم الداخلي؟</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>تختلف مدة التنفيذ حسب حجم المشروع وتعقيده. عادة ما تستغرق المشاريع الصغيرة 2-3 أسابيع، بينما قد تستغرق المشاريع الكبيرة 2-3 أشهر.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>هل تقدمون خدمات خارج الجزائر العاصمة؟</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، نقدم خدمات التصميم عن بعد في جميع أنحاء الجزائر، كما نقدم خدمة الزيارات المنزلية في الولايات الكبرى.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>كيف يمكنني معرفة تكلفة مشروعي؟</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>يمكنك حجز جلسة استشارية مبدئية مجانية لمناقشة متطلبات مشروعك وميزانيتك، وبعدها سنقدم لك عرض سعر مفصل.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>هل توفرون خدمة التوصيل والتركيب للأثاث؟</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>نعم، نوفر خدمة التوصيل والتركيب لجميع قطع الأثاث التي تشتريها من متجرنا، وذلك برسوم إضافية تعتمد على المسافة وحجم الطلب.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+{% endblock %}

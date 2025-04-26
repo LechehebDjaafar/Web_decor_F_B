@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}ديكور سمارت - حول مساحتك بذوقك وميزانيتك{% endblock %}
+
+{% block content %}
+<!-- قسم الصورة الرئيسية -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Nouvel décor nouvelle vie</h1>
+            <p class="hero-tagline">حول مساحتك بذوقك وميزانيتك مع ديكور سمارت</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('booking') }}" class="btn btn-primary">ابدأ الآن</a>
+                <a href="{{ url_for('store') }}" class="btn btn-secondary">تصفح المتجر</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- مقتطف من الخدمات -->
+<section class="services-preview">
+    <div class="container">
+        <h2 class="section-title">خدماتنا المميزة</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>تصميم حسب الطلب</h3>
+                <p>تصاميم داخلية فريدة تناسب ذوقك واحتياجاتك الخاصة</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>أثاث محلي بجودة عالية</h3>
+                <p>نختار لك أفضل قطع الأثاث من صناع محليين بجودة عالمية</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>استشارة مع مصمم محترف</h3>
+                <p>خبراء في التصميم الداخلي لمساعدتك في اختيار الأفضل لمساحتك</p>
+            </div>
+        </div>
+        <div class="services-cta">
+            <a href="{{ url_for('services') }}" class="btn btn-outline">اكتشف المزيد من خدماتنا</a>
+        </div>
+    </div>
+</section>
+
+<!-- قسم تقييمات العملاء -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+        <div class="testimonials-slider">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    {% for i in range(testimonial.rating) %}
+                    <i class="fas fa-star"></i>
+                    {% endfor %}
+                </div>
+                <p class="testimonial-text">"{{ testimonial.text }}"</p>
+                <div class="testimonial-author">
+                    <p class="author-name">{{ testimonial.name }}</p>
+                    <p class="author-city">{{ testimonial.city }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- قسم الدعوة للتسجيل -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>انضم إلينا اليوم</h2>
+            <p>سجل حسابك الآن واستفد من خصومات حصرية وتجربة تصميم فريدة</p>
+            <a href="#" class="btn btn-primary">إنشاء حساب</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

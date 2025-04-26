@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+{% block title %}متجر الأثاث - ديكور سمارت{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>متجر الأثاث</h1>
+        <p>اختر الأثاث المناسب لمساحتك وذوقك</p>
+    </div>
+</section>
+
+<section class="store-section">
+    <div class="container">
+        <div class="store-filter" id="filterSection" data-current-category="{{ category }}">
+            <div class="filter-categories">
+                <h3>الفئات</h3>
+                <ul class="category-list">
+                    <li><a href="{{ url_for('store', category='all') }}" class="{{ 'active' if category == 'all' else '' }}">جميع المنتجات</a></li>
+                    <li><a href="{{ url_for('store', category='living') }}" class="{{ 'active' if category == 'living' else '' }}">صالون</a></li>
+                    <li><a href="{{ url_for('store', category='bedroom') }}" class="{{ 'active' if category == 'bedroom' else '' }}">غرفة نوم</a></li>
+                    <li><a href="{{ url_for('store', category='kitchen') }}" class="{{ 'active' if category == 'kitchen' else '' }}">مطبخ</a></li>
+                    <li><a href="{{ url_for('store', category='office') }}" class="{{ 'active' if category == 'office' else '' }}">مكتب</a></li>
+                    <li><a href="{{ url_for('store', category='decor') }}" class="{{ 'active' if category == 'decor' else '' }}">ديكور</a></li>
+                </ul>
+            </div>
+            
+            <div class="filter-options">
+                <h3>فلترة حسب</h3>
+                <div class="filter-group" data-filter-type="price">
+                    <h4>السعر</h4>
+                    <div class="price-slider">
+                        <input type="range" min="1000" max="100000" value="{{ request.args.get('price', 50000) }}" class="price-range" id="priceRange">
+                        <div class="price-values">
+                            <span>1,000 دج</span>
+                            <span id="priceValue">{{ '{:,.0f}'.format(request.args.get('price', 50000)|float) }} دج</span>
+                            <span>100,000 دج</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group" data-filter-type="style">
+                    <h4>النمط</h4>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="style" value="modern"> عصري</label>
+                        <label><input type="checkbox" name="style" value="classic"> كلاسيكي</label>
+                        <label><input type="checkbox" name="style" value="rustic"> ريفي</label>
+                        <label><input type="checkbox" name="style" value="industrial"> صناعي</label>
+                        <label><input type="checkbox" name="style" value="minimalist"> بسيط</label>
+                    </div>
+                </div>
+                
+                <div class="filter-group" data-filter-type="color">
+                    <h4>اللون</h4>
+                    <div class="color-options">
+                        <label class="color-option white"><input type="checkbox" name="color" value="white"><span></span></label>
+                        <label class="color-option black"><input type="checkbox" name="color" value="black"><span></span></label>
+                        <label class="color-option brown"><input type="checkbox" name="color" value="brown"><span></span></label>
+                        <label class="color-option gray"><input type="checkbox" name="color" value="gray"><span></span></label>
+                        <label class="color-option blue"><input type="checkbox" name="color" value="blue"><span></span></label>
+                        <label class="color-option green"><input type="checkbox" name="color" value="green"><span></span></label>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary apply-filter" data-action="apply">تطبيق الفلاتر</button>
+                <button class="btn btn-outline reset-filter" data-action="reset">إعادة ضبط</button>
+            </div>
+        </div>
+        
+        <div class="products-container">
+            <div class="products-header">
+                <h2 id="categoryTitle">{{ category_names.get(category, 'جميع المنتجات') }}</h2>
+                <div class="products-sorting">
+                    <label for="sortBy">ترتيب حسب:</label>
+                    <select id="sortBy" data-current-sort="{{ request.args.get('sort', 'popularity') }}">
+                        <option value="popularity">الأكثر شعبية</option>
+                        <option value="price_asc">السعر: من الأقل للأعلى</option>
+                        <option value="price_desc">السعر: من الأعلى للأقل</option>
+                        <option value="newest">الأحدث</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                {% for product in products %}
+                <div class="product-card" data-product-id="{{ product.id }}">
+                    <div class="product-image">
+                        <img src="{{ url_for('static', filename='images/furniture/' + product.image) }}" 
+                             data-src="{{ url_for('static', filename='images/furniture/' + product.image) }}" 
+                             alt="{{ product.name }}">
+                        <button class="favorite-btn" data-id="{{ product.id }}">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <p class="product-category">{{ category_names.get(product.category) }}</p>
+                        <p class="product-price">{{ "{:,.2f}".format(product.price) }} دج</p>
+                        <div class="product-actions">
+                            <a href="{{ url_for('product_details', product_id=product.id) }}" class="btn btn-outline btn-sm">عرض التفاصيل</a>
+                            <button class="btn btn-primary btn-sm contact-btn" data-id="{{ product.id }}">تواصل للشراء</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="pagination" data-current-page="{{ page }}" data-total-pages="{{ total_pages }}">
+                {% if page > 1 %}
+                <a href="{{ url_for('store', category=category, page=page-1) }}" class="page-link prev">السابق</a>
+                {% endif %}
+                
+                {% for i in range(1, total_pages + 1) %}
+                <a href="{{ url_for('store', category=category, page=i) }}" class="page-link {{ 'active' if i == page else '' }}">{{ i }}</a>
+                {% endfor %}
+                
+                {% if page < total_pages %}
+                <a href="{{ url_for('store', category=category, page=page+1) }}" class="page-link next">التالي</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- نافذة التواصل للشراء -->
+<div class="modal" id="contactModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>تواصل للاستفسار عن المنتج</h2>
+        <form id="contactForm">
+            <input type="hidden" id="productId" name="product_id">
+            <div class="form-group">
+                <label for="name">الاسم الكامل</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="message">رسالتك</label>
+                <textarea id="message" name="message" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/store.js') }}"></script>
+{% endblock %}
