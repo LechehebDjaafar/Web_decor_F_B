@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احجز موعدك | ديكور سمارت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css\appointment.css">
+</head>
+<body>
+    <!-- هيدر -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-home"></i> ديكور <span>سمارت</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="services.html">خدماتنا</a></li>
+                    <li><a href="shop.html">المتجر</a></li>
+                    <li><a href="appointment.html" class="active">احجز موعدك</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li><a href="login.html" class="btn-login">تسجيل الدخول</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- احجز موعدك -->
+    <section id="appointment" class="appointment">
+        <div class="container">
+            <h2 class="section-title">احجز موعدك</h2>
+            <div class="appointment-content">
+                <div class="appointment-image">
+                    <img src="images\img_con.png" alt="صورة حجز موعد">
+                </div>
+                <div class="appointment-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="fullname">الاسم الكامل</label>
+                            <input type="text" id="fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">رقم الهاتف / البريد الإلكتروني</label>
+                            <input type="text" id="contact" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">نوع الخدمة المطلوبة</label>
+                            <select id="service" required>
+                                <option value="">اختر الخدمة</option>
+                                <option value="design">تصميم داخلي</option>
+                                <option value="furniture">تأثيث</option>
+                                <option value="consultation">استشارة</option>
+                                <option value="custom">طلب أثاث خاص</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="designer">اختيار المصمم</label>
+                            <select id="designer">
+                                <option value="auto">تلقائي</option>
+                                <option value="designer1">سمير حمدي</option>
+                                <option value="designer2">أمينة فارس</option>
+                                <option value="designer3">بلال مراد</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">التاريخ</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">الوقت</label>
+                                <input type="time" id="time" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">ملاحظات إضافية</label>
+                            <textarea id="notes" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">تأكيد الحجز</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- لماذا تحجز موعدًا معنا -->
+    <section class="why-appointment">
+        <div class="container">
+            <h2 class="section-title">لماذا تحجز موعدًا معنا</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>استشارة متخصصة</h3>
+                    <p>احصل على استشارة من مصممين محترفين يساعدونك في تحويل أفكارك إلى تصاميم واقعية.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>توفير في التكاليف</h3>
+                    <p>تجنب الأخطاء المكلفة بالحصول على توجيهات مهنية تناسب ميزانيتك المتاحة.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>توفير الوقت</h3>
+                    <p>خطة عمل واضحة ومدروسة توفر عليك الوقت والجهد في عملية التصميم والتنفيذ.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <h3>استشارة عن بعد</h3>
+                    <p>يمكنك الحصول على استشارتنا من أي مكان عبر تطبيقات الاتصال المرئي المختلفة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>ما هي تكلفة الاستشارة؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تبدأ تكلفة الاستشارة من 3000 دج للساعة الواحدة، وتختلف حسب نوع الخدمة المطلوبة وخبرة المصمم.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>هل يمكنني إلغاء الموعد؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يمكنك إلغاء الموعد قبل 24 ساعة من الوقت المحدد دون أي رسوم. أما الإلغاء بعد هذه المدة فيخضع لرسوم إلغاء.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>ماذا يجب أن أحضر معي للاستشارة؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يفضل تحضير مخطط المساحة، صور للوضع الحالي، ميزانية تقريبية، وأي أفكار أو صور مرجعية تفضلها للتصميم.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>كم من الوقت تستغرق الاستشارة عادةً؟</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تستغرق الاستشارة الأولية عادةً ساعة واحدة، ويمكن تمديدها حسب احتياجات المشروع.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo">
+                        <i class="fas fa-home"></i> ديكور <span>سمارت</span>
+                    </div>
+                    <p>منصة جزائرية للتصميم الداخلي والتأثيث تجمع بين الخبرة والتكنولوجيا لتقديم خدمة عصرية ومتكاملة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="services.html">خدماتنا</a></li>
+                        <li><a href="shop.html">المتجر</a></li>
+                        <li><a href="appointment.html">احجز موعدك</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="services.html">تصميم داخلي</a></li>
+                        <li><a href="services.html">تأثيث منازل</a></li>
+                        <li><a href="services.html">تصميم مطاعم وفنادق</a></li>
+                        <li><a href="services.html">استشارات تصميمية</a></li>
+                        <li><a href="services.html">أثاث مخصص</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك للحصول على آخر العروض والأخبار</p>
+                    <form>
+                        <input type="email" placeholder="بريدك الإلكتروني">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ديكور سمارت. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- سكريبت -->
+    <script src="js\appointment.js"></script>
+</body>
+</html>
